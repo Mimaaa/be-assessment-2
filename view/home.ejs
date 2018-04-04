@@ -1,9 +1,14 @@
 <html lang="nl">
 <%- include('head.ejs') %>
 <body>
+  <main>
     <% data.forEach(function (lifter) { %>
-      <h2><%= lifter.naam %></h2>
+      <a href="/<%= lifter.id %>">
+        <img src="/image/<%= lifter.id %>.jpg" alt>
+        <h1><%= lifter.naam %></h1>
+      </a>
       <% }) %>
+  </main>
   <%- include('tail.ejs') %>
 </body>
 </html>
