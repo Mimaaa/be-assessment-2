@@ -4,7 +4,7 @@
   <%- include('nav.ejs') %>
   <main>
     <ul>
-      <h1>Beste Powerlifters</h1>
+      <h1>PWRLIFTING</h1>
       <% data.forEach(function (lifter) { %>
         <li>
           <a href="/<%= lifter.id %>">
@@ -14,6 +14,11 @@
           </a>
         </li>  
       <% }) %>
+        <li>
+          <a href="">
+            <p>LIFTER TOEVOEGEN</p>
+          </a>
+        </li>
     </ul>
   </main>
   <%- include('tail.ejs') %>
