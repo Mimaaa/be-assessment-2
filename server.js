@@ -15,10 +15,7 @@ function home(req, res) {
   var result = { errors: [], data: undefined }
 
   try {
-    const client = new Client({
-      connectionString: process.env.DATABASE_URL,
-      ssl: true,
-    })
+    const client = new Client()
     client.connect()
       .then(() => {
         console.log('connection complete');
