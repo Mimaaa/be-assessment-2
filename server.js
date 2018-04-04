@@ -2,4 +2,5 @@
 
 const express = require('express')
 
-const app = express();
+const app = express()
+  .listen(process.env.PORT)
