@@ -9,6 +9,7 @@ const app = express()
   .set('view engine', 'ejs')
   .set('views', 'view')
   .get('/', home)
+  .get('/add', form)
   .get('/:id', get)
   .listen(process.env.PORT || 1902)
 
@@ -74,3 +75,6 @@ function get(req, res) {
   }
 }
 
+function form(req, res) {
+  res.render('add.ejs')
+}
