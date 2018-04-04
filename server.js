@@ -1,6 +1,7 @@
 'use strict'
 
 const express = require('express')
+const Client = require('pg').Client
 const dotenv = require('dotenv').config();
 
 const app = express()
