@@ -111,3 +111,61 @@ main li a {
 main li img {
   width: 15%;
 }
+
+form {
+  width: 30%;
+}
+
+label {
+  display: block;
+}
+
+label,
+fieldset {
+  margin: 1em;
+}
+
+fieldset {
+  border: none;
+  display: inline-flex;
+  width: 92%;
+}
+
+fieldset > div {
+  margin-top: 0.8em;
+  border: 1px solid black;
+  display: inline-flex;
+  width: 50%;
+  background-color: white;
+}
+
+fieldset > div label:first-of-type {
+  margin-left: 2em;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin-top: 1em;
+  padding: 0.8em;
+  border: 1px solid black;
+  border-radius: 0.125em;
+}
+
+button {
+  margin-top: 2em;
+  display: block;
+  width: 100%;
+  font-size: 1.25em;
+  padding: 0.5em;
+  background-color: black;
+  border: 1px solid black;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
