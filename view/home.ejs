@@ -2,12 +2,17 @@
 <%- include('head.ejs') %>
 <body>
   <main>
-    <% data.forEach(function (lifter) { %>
-      <a href="/<%= lifter.id %>">
-        <img src="images/<%= lifter.id %>.jpg" alt>
-        <h1><%= lifter.naam %></h1>
-      </a>
+    <ul>
+      <% data.forEach(function (lifter) { %>
+        <li>
+          <a href="/<%= lifter.id %>"></a>
+            <p><%= lifter.id %>.</p>
+            <img src="images/<%= lifter.id %>.jpg" alt>
+            <p><%= lifter.naam %></p>
+          </a>
+        </li>  
       <% }) %>
+    </ul>
   </main>
   <%- include('tail.ejs') %>
 </body>

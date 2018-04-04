@@ -1,4 +1,4 @@
-/* reset */
+reset
 blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,html,iframe,legend,li,ol,p,textarea,ul{margin:0;padding:0}ul{list-style:none}button,input,select,textarea{margin:0}img{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0;text-align:left}
 
 html {
@@ -17,7 +17,44 @@ body {
   background-color: rgb(249, 249, 249);
 }
 
+main {
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  border: 2px solid black;
+  margin: 2em;
+  max-width: 35em;
+}
+
+li p:nth-of-type(1) {
+  font-size: 2.5em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+li p:nth-of-type(2) {
+  font-size: 1.5em;
+  margin-left: 2.5em;
+}
+
+li:hover {
+  box-shadow: 0px 5px 10px lightgrey;
+}
+
 a {
   color: black;
   text-decoration: none;
+}
+
+li a {
+  display: flex;
+  align-items: center;
+}
+
+li img {
+  width: 15%;
 }
