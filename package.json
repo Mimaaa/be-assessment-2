@@ -1,0 +1,21 @@
+{
+  "name": "be-assessment-2",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Assessment 2 for the Backend Course",
+  "main": "server.js",
+  "scripts": {
+    "watch": "nodemon server.js",
+    "start": "node server.js",
+    "lint": "xo"
+  },
+  "license:": "MIT",
+  "repository": "mimaaa/be-asssessment-2",
+  "author": "Mirza van Meerwijk <hello@mirza.lol> (http://mirza.lol)",
+  "keywords": [
+    "node",
+    "express",
+    "postgresql"
+  ],
+  "homepage": "https://github.com/Mimaaa/be-assessment-2#readme"
+}
