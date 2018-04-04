@@ -1,10 +1,13 @@
 <html lang="nl">
 <%- include('head.ejs') %>
-
   <body>
-    <%- include('head.ejs') %>
+    <%- include('nav.ejs') %>
     <main>
-      <%- include('nav.ejs') %>
+      <% if (data) { %>
+        <h2>
+          <%= data.naam %>
+        </h2>
+        <% } %>
     </main>
     <%- include('tail.ejs') %>
   </body>
