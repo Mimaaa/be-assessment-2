@@ -1,3 +1,23 @@
+/* reset */
+blockquote,body,dd,dl,dt,fieldset,figure,h1,h2,h3,h4,h5,h6,html,iframe,legend,li,ol,p,textarea,ul{margin:0;padding:0}ul{list-style:none}button,input,select,textarea{margin:0}img{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0;text-align:left}
+
+html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emojiv', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  line-height: 1.5em;
+  box-sizing: inherit;
+}
+
 body {
-  background: cyan;
+  background-color: rgb(249, 249, 249);
+}
+
+a {
+  color: black;
+  text-decoration: none;
 }
