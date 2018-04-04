@@ -4,6 +4,30 @@
     <%- include('nav.ejs') %>
       <main>
         <h1>LIFTER TOEVOEGEN</h1>
+        <form action="/" method="POST">
+          <label> Naam *
+            <input type="text" name="naam" required>
+          </label>
+
+          <fieldset>
+            <legend>Geslacht *</legend>
+            <label>
+              <input type="radio" name="geslacht" value="man" required> Man
+            </label>
+            <label>
+              <input type="radio" name="geslacht" value="vrouw" required> Vrouw
+            </label>
+          </fieldset>
+
+          <label> Geboortedatum*
+            <input type="date" name="geboortedatum">
+          </label>
+
+          <label> Lichaamsgewicht *
+            <input type="number">
+          </label>
+          <button type="submit" value="TOEVOEGEN">TOEVOEGEN</button>
+        </form>
       </main>
       <%- include('tail.ejs') %>
   </body>
