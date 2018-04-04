@@ -20,5 +20,8 @@
   "homepage": "https://github.com/Mimaaa/be-assessment-2#readme",
   "devDependencies": {
     "nodemon": "^1.17.3"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
   }
 }
