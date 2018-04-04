@@ -43,8 +43,8 @@ function home(req, res) {
 }
 
 function get(req, res) {
-  var id = req.params.id
-  var result = { errors: [], data: undefined }
+  const id = req.params.id
+  const result = { errors: [], data: undefined }
 
   try {
     const client = new Client()
