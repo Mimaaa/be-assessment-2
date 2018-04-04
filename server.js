@@ -3,6 +3,7 @@
 const express = require('express')
 const { Client } = require('pg')
 const multer = require('multer')
+const fs = require('fs')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv').config();
 
