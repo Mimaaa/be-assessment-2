@@ -2,6 +2,28 @@
 <%- include('head.ejs') %>
 
   <body>
+    <% errors.forEach(function (err) { %>
+    <% if (err.id > 200) { // actual http errors %>
+      <article class="animal frame">
+        <figure class=frame-image>
+          <img src="https://http.cat/<%= err.id  %>" alt="<%= err.id %> <%= err.title %>">
+        </figure>
+      </article>
+      <% } else { %>
+        <article class="animal frame">
+          <figure class=frame-image>
+            <img src=https://http.cat/422 alt>
+          </figure>
+          <h1>
+            <%= err.title %>
+          </h1>
+          <p>
+            <%= err.id %>:
+              <%= err.detail %>
+          </p>
+        </article>
+        <% } %>
+          <% }) %>
     <%- include('tail.ejs') %>
   </body>
 

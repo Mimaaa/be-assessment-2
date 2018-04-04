@@ -1,7 +1,9 @@
 <html lang="nl">
 <%- include('head.ejs') %>
 <body>
-  <h1>test</h1>
+    <% data.forEach(function (lifter) { %>
+      <h2><%= lifter.naam %></h2>
+      <% }) %>
   <%- include('tail.ejs') %>
 </body>
 </html>

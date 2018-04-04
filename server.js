@@ -13,5 +13,33 @@ const app = express()
 
 
 function home(req, res) {
-  res.render('home')
+  var result = { errors: [], data: undefined }
+
+  try {
+    const client = new Client()
+    client.connect()
+      .then(() => {
+        console.log('connection complete');
+
+        const sql = 'SELECT * FROM lifters'
+        return client.query(sql)
+      })
+      .then((result) => {
+        result.data = result.rows
+        res.format({
+          json: function () {
+            return res.json(result)
+          },
+          html: function () {
+            return res.render('home.ejs', result)
+          }
+        })
+      })
+  } catch (err) {
+    result.errors.push({ id: 400, title: 'bad request' })
+    res.status(400).render('error.ejs', result)
+    return
+  }
 }
+
+
