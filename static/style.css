@@ -17,6 +17,30 @@ body {
   background-color: rgb(249, 249, 249);
 }
 
+nav {
+  display: flex;
+  justify-content: right;
+}
+
+nav ul {
+  display: inline-flex;
+  margin: 1em;
+}
+
+nav ul li {
+  margin-right: 2em;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.5em;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -39,6 +63,11 @@ main li p:nth-of-type(1) {
 main li p:nth-of-type(2) {
   font-size: 1.5em;
   margin-left: 2.5em;
+}
+
+main li:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 main li:hover {
