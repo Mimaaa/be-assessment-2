@@ -14,6 +14,7 @@ const app = express()
   .get('/', home)
   .get('/add', form)
   .get('/:id', get)
+  .post('/', add)
   .listen(process.env.PORT || 1902)
 
 function home(req, res) {
@@ -80,4 +81,38 @@ function get(req, res) {
 
 function form(req, res) {
   res.render('add')
+}
+
+function add(req, res) {
+  const result = { errors: [], data: undefined}
+  const body = req.body
+
+  const lifterInformation = {
+    naam: body.naam,
+    geslacht: body.geslacht,
+    geboortedatum: body.geboortedatum,
+    lichaamsgewicht: +body.lichaamsgewicht
+  }
+  console.log(lifterInformation)
+
+  try {
+    const client = new Client()
+    client.connect()
+      .then(() => {
+        console.log('connection complete');
+
+        const sql = 'INSERT INTO lifters (naam, geslacht, geboortedatum, lichaamsgewicht) VALUES ($1, $2, $3, $4)'
+        const params = [lifterInformation.naam, lifterInformation.geslacht, lifterInformation.geboortedatum, lifterInformation.lichaamsgewicht]
+        return client.query(sql, params)
+      })
+      .then((result) => {
+        console.log('result?', result)
+        res.redirect('/')
+      })
+  } catch (err) {
+    result.errors.push({ id: 422, title: 'unprocessable entity' })
+    res.status(422).render('error.ejs', Object.assign({}, result, helpers))
+    console.log(err)
+    return
+  }
 }
