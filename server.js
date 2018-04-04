@@ -27,6 +27,7 @@ function home(req, res) {
         return client.query(sql)
       })
       .then((result) => {
+        console.log(result)
         result.data = result.rows
         res.format({
           json: function () {
