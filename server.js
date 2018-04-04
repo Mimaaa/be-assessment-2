@@ -35,13 +35,13 @@ function home(req, res) {
             return res.json(result)
           },
           html: function () {
-            return res.render('home.ejs', result)
+            return res.render('home', result)
           }
         })
       })
   } catch (err) {
     result.errors.push({ id: 400, title: 'bad request' })
-    res.status(400).render('error.ejs', result)
+    res.status(400).render('error', result)
     return
   }
 }
@@ -67,17 +67,17 @@ function get(req, res) {
             return res.json(result)
           },
           html: function () {
-            return res.render('detail.ejs', result)
+            return res.render('detail', result)
           }
         })
       })
   } catch (err) {
     result.errors.push({ id: 400, title: 'bad request' })
-    res.status(400).render('error.ejs', result)
+    res.status(400).render('error', result)
     return
   }
 }
 
 function form(req, res) {
-  res.render('add.ejs')
+  res.render('add')
 }
