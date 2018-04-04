@@ -4,4 +4,4 @@ const express = require('express')
 const dotenv = require('dotenv').config();
 
 const app = express()
-  .listen(process.env.PORT)
+  .listen(process.env.PORT || 1902)
