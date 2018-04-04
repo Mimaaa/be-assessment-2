@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require('express')
-const Client = require('pg').Client
+const { Client } = require('pg')
 const dotenv = require('dotenv').config();
 
 const app = express()
@@ -11,12 +11,14 @@ const app = express()
   .get('/', home)
   .listen(process.env.PORT || 1902)
 
-
 function home(req, res) {
   var result = { errors: [], data: undefined }
 
   try {
-    const client = new Client()
+    const client = new Client({
+      connectionString: process.env.DATABASE_URL,
+      ssl: true,
+    })
     client.connect()
       .then(() => {
         console.log('connection complete');
