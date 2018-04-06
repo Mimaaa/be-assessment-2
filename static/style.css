@@ -76,7 +76,7 @@ main li:hover {
 }
 
 main li:hover {
-  box-shadow: 0px 5px 10px lightgrey;
+  box-shadow: 7px 7px #b4b4b4;
 }
 
 main li:last-of-type {
