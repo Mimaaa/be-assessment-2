@@ -5,8 +5,8 @@
     <%- include('nav.ejs') %>
       <main>
         <form action="/edit/<%= data.id %>" method="POST" enctype="multipart/form-data">
-          <label> Naam *
-            <input type="text" name="naam" value="<%= data.naam %>" placeholder="Vul hier je naam in" required>
+          <label> Naam
+            <input type="text" name="naam" value="<%= data.naam %>" placeholder="Vul hier je naam in">
           </label>
 
           <fieldset>
@@ -22,15 +22,15 @@
           </fieldset>
 
           <label> Geboortedatum*
-            <input type="date" name="geboortedatum" value="<%= data.geboortedatum %>">
+            <input type="date" name="geboortedatum" value="<%= data.geboortedatum %>" required>
           </label>
 
-          <label> Lichaamsgewicht *
-            <input type="number" name="lichaamsgewicht" value="<%= data.lichaamsgewicht %>" placeholder="Vul hier je lichaamsgewicht in" required>
+          <label> Lichaamsgewicht
+            <input type="number" name="lichaamsgewicht" value="<%= data.lichaamsgewicht %>" placeholder="Vul hier je lichaamsgewicht in">
           </label>
 
-          <label> Avatar *
-            <input type="file" name="image" accept="image/jpeg" required>
+          <label> Avatar
+            <input type="file" name="image" accept="image/jpeg">
           </label>
 
           <button type="submit" value="AANPASSEN">AANPASSEN</button>

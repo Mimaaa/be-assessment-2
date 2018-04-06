@@ -26,7 +26,7 @@ const app = express()
   .get('/edit/:id', editForm)
   .post('/', upload.single('image'), add)
   .post('/:id', remove)
-  .post('/edit/:id', edit)
+  .post('/edit/:id', upload.single('image'), edit)
   .listen(process.env.PORT || 1902)
 
 function home(req, res) {
