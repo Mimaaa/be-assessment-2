@@ -12,6 +12,10 @@ const upload = multer({
   fileFilter: fileFilter
 })
 
+const client = new Client()
+client.connect()
+console.log('Connected with DB');
+
 const app = express()
   .use(express.static('static'))
   .set('view engine', 'ejs')
@@ -25,17 +29,13 @@ const app = express()
   .post('/:id', remove)
   .listen(process.env.PORT || 1902)
 
+
+
 function home(req, res) {
   const result = { errors: [], data: undefined }
+  const sql = 'SELECT * FROM lifters'
 
-  const client = new Client()
-  client.connect()
-    .then(() => {
-      console.log('connection complete');
-
-      const sql = 'SELECT * FROM lifters'
-      return client.query(sql)
-    })
+    client.query(sql)
     .then((result) => {
       result.data = result.rows
       res.format({
@@ -45,25 +45,19 @@ function home(req, res) {
     })
     .catch((error) => {
       console.log('er is een error')
-      // result.errors.push({ id: 400, title: 'bad request' })
-      // res.status(400).render('error', result)
-      // return
+      result.errors.push({ id: 400, title: 'bad request' })
+      res.status(400).render('error', result)
+      return
     })
 }
 
 function get(req, res) {
   const id = req.params.id
   const result = { errors: [], data: undefined }
+  const sql = 'SELECT * FROM lifters WHERE id = $1'
+  const params = [id]
 
-  const client = new Client()
-  client.connect()
-    .then(() => {
-      console.log('Connected with DB');
-
-      const sql = 'SELECT * FROM lifters WHERE id = $1'
-      const params = [id]
-      return client.query(sql, params)
-    })
+    client.query(sql, params)
     .then((result) => {
       console.log(result)
       result.data = result.rows[0]
@@ -74,9 +68,9 @@ function get(req, res) {
     })
     .catch((error) => {
       console.log('er is een error')
-      // result.errors.push({ id: 400, title: 'bad request' })
-      // res.status(400).render('error', result)
-      // return
+      result.errors.push({ id: 400, title: 'bad request' })
+      res.status(400).render('error', result)
+      return
     })
 }
 
@@ -86,16 +80,10 @@ function form(req, res) {
 
 function add(req, res) {
   const result = { errors: [], data: undefined}
+  const sql = 'INSERT INTO lifters (naam, geslacht, geboortedatum, lichaamsgewicht) VALUES ($1, $2, $3, $4) RETURNING id'
+  const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, +req.body.lichaamsgewicht]
 
-  const client = new Client()
-  client.connect()
-    .then(() => {
-      console.log('connection complete');
-
-      const sql = 'INSERT INTO lifters (naam, geslacht, geboortedatum, lichaamsgewicht) VALUES ($1, $2, $3, $4) RETURNING id'
-      const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, +req.body.lichaamsgewicht]
-      return client.query(sql, params)
-    })
+    client.query(sql, params)
     .then((result) => {
       if (req.file) {
         fs.rename(req.file.path, 'static/images/' + result.rows[0].id + '.jpg')
@@ -105,33 +93,27 @@ function add(req, res) {
     })
     .catch((error) => {
       console.log('er is een error')
-      // result.errors.push({ id: 400, title: 'bad request' })
-      // res.status(400).render('error', result)
-      // return
+      result.errors.push({ id: 400, title: 'bad request' })
+      res.status(400).render('error', result)
+      return
     })
 }
 
 function remove(req, res) {
   const id = req.params.id
+  const sql = 'DELETE FROM lifters WHERE id = $1'
+  const params = [id]
 
-  const client = new Client()
-  client.connect()
-    .then(() => {
-      console.log('connection complete');
-
-      const sql = 'DELETE FROM lifters WHERE id = $1'
-      const params = [id]
-      return client.query(sql, params)
-    })
+    client.query(sql, params)
     .then((result) => {
       console.log(result)
       res.redirect('/')
     })
     .catch((error) => {
       console.log('er is een error')
-      // result.errors.push({ id: 400, title: 'bad request' })
-      // res.status(400).render('error', result)
-      // return
+      result.errors.push({ id: 400, title: 'bad request' })
+      res.status(400).render('error', result)
+      return
     })
 }
 
