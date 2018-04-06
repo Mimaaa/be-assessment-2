@@ -85,7 +85,8 @@ main li:last-of-type {
 }
 
 main li:last-of-type:hover {
-  background-color: lightgray;
+  background-color: #b4b4b4;
+  box-shadow: none;
 }
 
 main li:last-of-type a {
