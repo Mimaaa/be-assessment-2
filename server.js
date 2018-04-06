@@ -22,6 +22,7 @@ const app = express()
   .get('/add', form)
   .get('/:id', get)
   .post('/', upload.single('image'), add)
+  .post('/:id', remove)
   .listen(process.env.PORT || 1902)
 
 function home(req, res) {
@@ -115,6 +116,31 @@ function add(req, res) {
     result.errors.push({ id: 422, title: 'unprocessable entity' })
     res.status(422).render('error.ejs', result)
     console.log(err)
+    return
+  }
+}
+
+function remove(req, res) {
+  const id = req.params.id
+
+  try {
+    const client = new Client()
+    client.connect()
+      .then(() => {
+        console.log('connection complete');
+
+        const sql = 'DELETE FROM lifters WHERE id = $1'
+        const params = [id]
+        return client.query(sql, params)
+      })
+      .then((result) => {
+        console.log(result)
+        res.redirect('/')
+      })
+  } catch (err) {
+    console.log('er is een error')
+    result.errors.push({ id: 400, title: 'bad request' })
+    res.status(400).render('error', result)
     return
   }
 }
