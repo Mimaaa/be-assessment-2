@@ -108,6 +108,7 @@ main a {
 main li a {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 main li img {
@@ -157,7 +158,24 @@ input {
 button {
   margin-top: 2em;
   display: block;
-  width: 100%;
+  font-size: 1.25em;
+  padding: 0.5em;
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+  color: gray;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: white;
+  color: black;
+}
+
+#edit {
+  margin-top: 2em;
+  margin-right: 1em;
+  height: 10%;
   font-size: 1.25em;
   padding: 0.5em;
   background-color: black;
@@ -167,7 +185,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background-color: white;
-  color: black;
+#edit:hover {
+  background-color: #b4b4b4;
+  box-shadow: none;
 }
