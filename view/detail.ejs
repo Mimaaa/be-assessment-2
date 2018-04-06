@@ -7,8 +7,9 @@
         <h2>
           <%= data.naam %>
         </h2>
+        <a id="edit" href="/edit/<%= data.id %>">LIFTER AANPASSEN</a>
         <form method="POST" action="/<%= data.id %>">
-          <button type="submit">VERWIJDER LIFTER</button>
+          <button type="submit">LIFTER VERWIJDEREN</button>
         </form>
       <% } %>
     </main>

@@ -23,15 +23,17 @@ const app = express()
   .use(bodyParser.urlencoded({ extended: true }))
   .use(bodyParser.json())
   .get('/', home)
-  .get('/add', form)
+  .get('/add', addForm)
   .get('/:id', get)
+  .get('/edit/:id', editForm)
   .post('/', upload.single('image'), add)
   .post('/:id', remove)
+  .post('/edit/:id', edit)
   .listen(process.env.PORT || 1902)
 
 function home(req, res) {
   const result = { errors: [], data: undefined }
-  const sql = 'SELECT * FROM lifters'
+  const sql = 'SELECT * FROM lifters ORDER BY id'
 
   client.query(sql)
     .then((data) => {
@@ -81,7 +83,7 @@ function get(req, res) {
     })
 }
 
-function form(req, res) {
+function addForm(req, res) {
   res.render('add')
 }
 
@@ -98,9 +100,9 @@ function add(req, res) {
         return
       } else {
         // if (req.file) {
-        //   fs.rename(req.file.path, 'static/images/' + result.rows[0].id + '.jpg')
+        //   fs.rename(req.file.path, 'static/images/' + data.rows[0].id + '.jpg')
         // }
-        // console.log(result)
+        // console.log(data)
         res.redirect('/' + data.rows[0].id)
       }
     })
@@ -128,6 +130,64 @@ function remove(req, res) {
       }
     })
     .catch((error) => {
+      result.errors.push({ id: 400, title: 'bad request' })
+      res.status(400).render('error', result)
+      return
+    })
+}
+
+function editForm(req, res) {
+  const id = req.params.id
+  const result = { errors: [], data: undefined }
+  const sql = 'SELECT * FROM lifters WHERE id = $1'
+  const params = [id]
+
+  client.query(sql, params)
+    .then((data) => {
+      if (data.rowCount === 0) {
+        result.errors.push({ id: 404, title: 'not found' })
+        res.status(404).render('error', result)
+        return
+      } else {
+        result.data = data.rows[0]
+        res.format({
+          json: () => { return res.json(result) },
+          html: () => { return res.render('edit', result) }
+        })
+      }
+    })
+    .catch((error) => {
+      result.errors.push({ id: 400, title: 'bad request' })
+      res.status(400).render('error', result)
+      return
+    })
+}
+
+function edit(req, res) {
+  const result = { errors: [], data: undefined }
+  const sql = 'UPDATE lifters SET naam = $1, geslacht = $2, geboortedatum = $3, lichaamsgewicht = $4 WHERE id = $5'
+  const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, +req.body.lichaamsgewicht, req.params.id]
+
+  console.log(params)
+
+  client.query(sql, params)
+    .then((data) => {
+      console.log(data)
+      if (data.rowCount === 0) {
+        res.redirect('/')
+        return
+      } else {
+        result.errors.push({ id: 422, title: 'unprocessable entity' })
+        res.status(422).render('error', result)
+        // if (req.file) {
+        //   fs.rename(req.file.path, 'static/images/' + data.rows[0].id + '.jpg')
+        // }
+        // console.log(data)
+      }
+    })
+    .catch((error) => {
+      console.log('er is een error')
+      console.log(error)
       result.errors.push({ id: 400, title: 'bad request' })
       res.status(400).render('error', result)
       return
