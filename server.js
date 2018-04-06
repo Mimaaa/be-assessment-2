@@ -29,22 +29,25 @@ const app = express()
   .post('/:id', remove)
   .listen(process.env.PORT || 1902)
 
-
-
 function home(req, res) {
   const result = { errors: [], data: undefined }
   const sql = 'SELECT * FROM lifters'
 
-    client.query(sql)
-    .then((result) => {
-      result.data = result.rows
-      res.format({
-        json: () => { return res.json(result) },
-        html: () => { return res.render('home', result) }
-      })
+  client.query(sql)
+    .then((data) => {
+      if (data.rowCount === 0) {
+        result.errors.push({ id: 404, title: 'not found' })
+        res.status(404).render('error', result)
+        return
+      } else {
+        result.data = data.rows
+        res.format({
+          json: () => { return res.json(result) },
+          html: () => { return res.render('home', result) }
+        })
+      }
     })
     .catch((error) => {
-      console.log('er is een error')
       result.errors.push({ id: 400, title: 'bad request' })
       res.status(400).render('error', result)
       return
@@ -57,17 +60,21 @@ function get(req, res) {
   const sql = 'SELECT * FROM lifters WHERE id = $1'
   const params = [id]
 
-    client.query(sql, params)
-    .then((result) => {
-      console.log(result)
-      result.data = result.rows[0]
-      res.format({
-        json: () => { return res.json(result)},
-        html: () => { return res.render('detail', result)}
-      })
+  client.query(sql, params)
+    .then((data) => {
+      if (data.rowCount === 0) {
+        result.errors.push({ id: 404, title: 'not found' })
+        res.status(404).render('error', result)
+        return
+      } else {
+        result.data = data.rows[0]
+        res.format({
+          json: () => { return res.json(result) },
+          html: () => { return res.render('detail', result) }
+        })
+      }
     })
     .catch((error) => {
-      console.log('er is een error')
       result.errors.push({ id: 400, title: 'bad request' })
       res.status(400).render('error', result)
       return
@@ -83,13 +90,19 @@ function add(req, res) {
   const sql = 'INSERT INTO lifters (naam, geslacht, geboortedatum, lichaamsgewicht) VALUES ($1, $2, $3, $4) RETURNING id'
   const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, +req.body.lichaamsgewicht]
 
-    client.query(sql, params)
-    .then((result) => {
-      if (req.file) {
-        fs.rename(req.file.path, 'static/images/' + result.rows[0].id + '.jpg')
+  client.query(sql, params)
+    .then((data) => {
+      if (data.rowCount === 0) {
+        result.errors.push({ id: 422, title: 'unprocessable entity' })
+        res.status(422).render('error', result)
+        return
+      } else {
+        // if (req.file) {
+        //   fs.rename(req.file.path, 'static/images/' + result.rows[0].id + '.jpg')
+        // }
+        // console.log(result)
+        res.redirect('/' + data.rows[0].id)
       }
-      console.log(result)
-      res.redirect('/' + result.rows[0].id)
     })
     .catch((error) => {
       console.log('er is een error')
@@ -104,13 +117,17 @@ function remove(req, res) {
   const sql = 'DELETE FROM lifters WHERE id = $1'
   const params = [id]
 
-    client.query(sql, params)
-    .then((result) => {
-      console.log(result)
-      res.redirect('/')
+  client.query(sql, params)
+    .then((data) => {
+      if (data.rowCount === 0) {
+        result.errors.push({ id: 404, title: 'not found' })
+        res.status(404).render('error', result)
+        return
+      } else {
+        res.redirect('/')
+      }
     })
     .catch((error) => {
-      console.log('er is een error')
       result.errors.push({ id: 400, title: 'bad request' })
       res.status(400).render('error', result)
       return
