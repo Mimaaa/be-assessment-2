@@ -165,8 +165,6 @@ function edit(req, res) {
   const sql = 'UPDATE lifters SET naam = $1, geslacht = $2, geboortedatum = $3, lichaamsgewicht = $4 WHERE id = $5'
   const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, +req.body.lichaamsgewicht, req.params.id]
 
-  console.log(params)
-
   client.query(sql, params)
     .then((data) => {
       if (data.rowCount === 0) {
@@ -181,7 +179,6 @@ function edit(req, res) {
       }
     })
     .catch((error) => {
-      console.log(error)
       result.errors.push({ id: 400, title: 'bad request' })
       res.status(400).render('error', result)
       return
