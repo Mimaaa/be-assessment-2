@@ -8,8 +8,7 @@ const bodyParser = require('body-parser')
 const dotenv = require('dotenv').config();
 
 const upload = multer({
-  dest: 'static/images',
-  fileFilter: fileFilter
+  dest: 'static/images'
 })
 
 const client = new Client()
@@ -99,10 +98,9 @@ function add(req, res) {
         res.status(422).render('error', result)
         return
       } else {
-        // if (req.file) {
-        //   fs.rename(req.file.path, 'static/images/' + data.rows[0].id + '.jpg')
-        // }
-        // console.log(data)
+        if (req.file) {
+          fs.rename(req.file.path, 'static/images/' + data.rows[0].id + '.jpg')
+        }
         res.redirect('/' + data.rows[0].id)
       }
     })
@@ -188,12 +186,3 @@ function edit(req, res) {
       return
     })
 }
-
-// https://stackoverflow.com/questions/44171497/express-multer-filefilter-error-handling
-function fileFilter(req, file, cb) {
-  const extension = file.mimetype.split('/')[0];
-  if (extension !== 'image/jpeg') {
-    return cb(null, false), new Error('Something went wrong');
-  }
-  cb(null, true);
-};
