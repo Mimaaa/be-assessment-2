@@ -168,26 +168,21 @@ function edit(req, res) {
   const sql = 'UPDATE lifters SET naam = $1, geslacht = $2, geboortedatum = $3, lichaamsgewicht = $4 WHERE id = $5'
   const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, +req.body.lichaamsgewicht, req.params.id]
 
-  console.log(params)
-
   client.query(sql, params)
     .then((data) => {
-      console.log(data)
       if (data.rowCount === 0) {
-        res.redirect('/')
-        return
-      } else {
         result.errors.push({ id: 422, title: 'unprocessable entity' })
         res.status(422).render('error', result)
+        return
+      } else {
         // if (req.file) {
         //   fs.rename(req.file.path, 'static/images/' + data.rows[0].id + '.jpg')
         // }
         // console.log(data)
+        res.redirect('/' + req.params.id)
       }
     })
     .catch((error) => {
-      console.log('er is een error')
-      console.log(error)
       result.errors.push({ id: 400, title: 'bad request' })
       res.status(400).render('error', result)
       return
