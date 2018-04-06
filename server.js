@@ -7,6 +7,11 @@ const fs = require('fs')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv').config();
 
+const upload = multer({
+  dest: 'static/images',
+  fileFilter: fileFilter
+})
+
 const app = express()
   .use(express.static('static'))
   .set('view engine', 'ejs')
@@ -16,7 +21,7 @@ const app = express()
   .get('/', home)
   .get('/add', form)
   .get('/:id', get)
-  .post('/', add)
+  .post('/', upload.single('image'), add)
   .listen(process.env.PORT || 1902)
 
 function home(req, res) {
@@ -75,6 +80,7 @@ function get(req, res) {
         })
       })
   } catch (err) {
+    console.log('er is een error')
     result.errors.push({ id: 400, title: 'bad request' })
     res.status(400).render('error', result)
     return
@@ -87,15 +93,6 @@ function form(req, res) {
 
 function add(req, res) {
   const result = { errors: [], data: undefined}
-  const body = req.body
-
-  const lifterInformation = {
-    naam: body.naam,
-    geslacht: body.geslacht,
-    geboortedatum: body.geboortedatum,
-    lichaamsgewicht: +body.lichaamsgewicht
-  }
-  console.log(lifterInformation)
 
   try {
     const client = new Client()
@@ -103,18 +100,30 @@ function add(req, res) {
       .then(() => {
         console.log('connection complete');
 
-        const sql = 'INSERT INTO lifters (naam, geslacht, geboortedatum, lichaamsgewicht) VALUES ($1, $2, $3, $4)'
-        const params = [lifterInformation.naam, lifterInformation.geslacht, lifterInformation.geboortedatum, lifterInformation.lichaamsgewicht]
+        const sql = 'INSERT INTO lifters (naam, geslacht, geboortedatum, lichaamsgewicht) VALUES ($1, $2, $3, $4) RETURNING id'
+        const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, +req.body.lichaamsgewicht]
         return client.query(sql, params)
       })
       .then((result) => {
-        console.log('result?', result)
-        res.redirect('/')
+        if (req.file) {
+          fs.rename(req.file.path, 'static/images/'+result.rows[0].id+'.jpg')
+        }
+        console.log(result)
+        res.redirect('/' + result.rows[0].id)
       })
   } catch (err) {
     result.errors.push({ id: 422, title: 'unprocessable entity' })
-    res.status(422).render('error.ejs', Object.assign({}, result, helpers))
+    res.status(422).render('error.ejs', result)
     console.log(err)
     return
   }
 }
+
+// https://stackoverflow.com/questions/44171497/express-multer-filefilter-error-handling
+function fileFilter(req, file, cb) {
+  const extension = file.mimetype.split('/')[0];
+  if (extension !== 'image/jpeg') {
+    return cb(null, false), new Error('Something went wrong');
+  }
+  cb(null, true);
+};

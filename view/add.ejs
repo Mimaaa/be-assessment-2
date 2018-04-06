@@ -3,7 +3,7 @@
   <body>
     <%- include('nav.ejs') %>
       <main>
-        <form action="/" method="POST">
+        <form action="/" method="POST" enctype="multipart/form-data">
           <label> Naam *
             <input type="text" name="naam" placeholder="Vul hier je naam in" required>
           </label>
@@ -25,8 +25,13 @@
           </label>
 
           <label> Lichaamsgewicht *
-            <input type="number" name="lichaamsgewicht" placeholder="Vul hier je lichaamsgewicht in">
+            <input type="number" name="lichaamsgewicht" placeholder="Vul hier je lichaamsgewicht in" required>
           </label>
+
+          <label> Avatar *
+            <input type="file" name="image" accept="image/jpeg" required>
+          </label>
+          
           <button type="submit" value="TOEVOEGEN">TOEVOEGEN</button>
         </form>
       </main>
