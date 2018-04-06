@@ -4,7 +4,7 @@
   <body>
     <%- include('nav.ejs') %>
       <main>
-        <form action="/edit/<%= data.id %>" method="POST">
+        <form action="/edit/<%= data.id %>" method="POST" enctype="multipart/form-data">
           <label> Naam *
             <input type="text" name="naam" value="<%= data.naam %>" placeholder="Vul hier je naam in" required>
           </label>
@@ -29,9 +29,9 @@
             <input type="number" name="lichaamsgewicht" value="<%= data.lichaamsgewicht %>" placeholder="Vul hier je lichaamsgewicht in" required>
           </label>
 
-          <!-- <label> Avatar *
+          <label> Avatar *
             <input type="file" name="image" accept="image/jpeg" required>
-          </label> -->
+          </label>
 
           <button type="submit" value="AANPASSEN">AANPASSEN</button>
         </form>
