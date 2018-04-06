@@ -12,9 +12,13 @@ const upload = multer({
   fileFilter: fileFilter
 })
 
-const client = new Client()
-client.connect()
-console.log('Connected with DB');
+try {
+  const client = new Client()
+  client.connect()
+  console.log('Connected with DB');
+} catch(err) {
+ console.log(err)
+}
 
 const app = express()
   .use(express.static('static'))
