@@ -90,6 +90,7 @@ main li:last-of-type:hover {
 
 main li:last-of-type a {
   width: 100%;
+  height: inherit;
 }
 
 main li:last-of-type p {
