@@ -29,6 +29,7 @@ const app = express()
   .get('/', home)
   .get('/add', addForm)
   .get('/login', loginForm)
+  .get('/signup', signupForm)
   .get('/:id', get)
   .get('/edit/:id', editForm)
   .post('/', upload.single('image'), add)
@@ -230,6 +231,10 @@ function edit(req, res) {
       res.status(400).render('error', result)
       return
     })
+}
+
+function signupForm(req, res) {
+  res.render('signup')
 }
 
 function loginForm(req, res) {
