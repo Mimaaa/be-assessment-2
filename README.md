@@ -101,7 +101,7 @@ I've never used PostgreSQL but I'm familiar with the SQL syntax; it doesn't diff
 A better understanding of Nodes' core concepts. Of course we have access to amazing packages, but it's also important to know what Node has to offer at its core. By following the LearnYouNode tutorial I've had the opportunity to learn those concepts.
 ### JS
 In general I can say that my JavaScript/programming knowledge has increased. Stuff like a callback was an abstract term, but because of the frequent use in JS land and during this course, I got a better understanding of how to write JavaScript.
-## Did I enjoyed it?
+## Did I enjoy it?
 Yes, I definitely did. When I start working on a project I forget time and go into tunnel vision mode where I keep coding and trying new things till my mind is exhausted. It's fun.
 # Resources
 
