@@ -7,6 +7,7 @@ const multer = require('multer')
 const fs = require('fs')
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv').config();
+const argon2 = require('argon2')
 
 const upload = multer({
   dest: 'static/images'
