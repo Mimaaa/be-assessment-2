@@ -1,9 +1,26 @@
 <html lang="nl">
 <%- include('head.ejs') %>
-<body>
-    <% data.forEach(function (lifter) { %>
-      <h2><%= lifter.naam %></h2>
-      <% }) %>
-  <%- include('tail.ejs') %>
-</body>
+  <body>
+    <%- include('nav.ejs') %>
+    <main class="home">
+      <ul>
+        <h1>PWRLIFTING</h1>
+        <% data.forEach(function (lifter) { %>
+          <li>
+            <a href="/<%= lifter.id %>">
+              <p><%= lifter.id %>.</p>
+              <img src="images/<%= lifter.id %>.jpg" alt>
+              <p><%= lifter.naam %></p>
+            </a>
+          </li>  
+        <% }) %>
+          <li>
+            <a href="/add">
+              <p>LIFTER TOEVOEGEN</p>
+            </a>
+          </li>
+      </ul>
+    </main>
+    <%- include('tail.ejs') %>
+  </body>
 </html>

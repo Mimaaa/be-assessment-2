@@ -1,0 +1,41 @@
+<html lang="nl">
+<%- include('head.ejs') %>
+
+  <body>
+    <%- include('nav.ejs') %>
+      <main>
+        <form class="form login" action="/edit/<%= data.id %>" method="POST" enctype="multipart/form-data">
+          <label> Naam
+            <input type="text" name="naam" value="<%= data.naam %>" placeholder="Vul hier je naam in">
+          </label>
+
+          <fieldset>
+            <legend>Geslacht *</legend>
+            <div>
+              <label>
+                <input type="radio" name="geslacht" value="<%= data.geslacht %>" required> Man
+              </label>
+              <label>
+                <input type="radio" name="geslacht" value="<%= data.geslacht %>" required> Vrouw
+              </label>
+            </div>
+          </fieldset>
+
+          <label> Geboortedatum*
+            <input type="date" name="geboortedatum" value="<%= data.geboortedatum %>" required>
+          </label>
+
+          <label> Lichaamsgewicht
+            <input type="number" name="lichaamsgewicht" value="<%= data.lichaamsgewicht %>" placeholder="Vul hier je lichaamsgewicht in">
+          </label>
+
+          <label> Avatar
+            <input type="file" name="image" accept="image/jpeg">
+          </label>
+
+          <button type="submit" value="AANPASSEN">AANPASSEN</button>
+        </form>
+      </main>
+      <%- include('tail.ejs') %>
+  </body>
+</html>
