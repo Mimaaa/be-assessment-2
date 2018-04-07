@@ -40,16 +40,12 @@ This repo is connected to Heroku, so all changes are deployed instantly.
 $ git clone https://github.com/Mimaaa/be-assessment-2.git
 ```
 
-3. **Remove Code**
+3. **Switch Branch**
 
-In order to use the local database you need to remove two lines of code. On [line 15](https://github.com/Mimaaa/be-assessment-2/blob/1049fff9adba0188fa118ae392ea9e1cc95f288f/server.js#L15) we are setting up a new connection. You need to modify the code from `line 15 to 18`. 
+In order to use the local database you need to switch to the `local-db` branch.
 
-Line 15 to 17 should now look like this:
-
-```javascript
-const client = new Client();
-client.connect();
-console.log('Connected with DB');
+```sh
+$ git checkout local-db
 ```
 
 4. **Install dependencies**
