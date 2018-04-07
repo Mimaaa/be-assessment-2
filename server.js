@@ -11,7 +11,10 @@ const upload = multer({
   dest: 'static/images'
 })
 
-const client = new Client()
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+})
 client.connect()
 console.log('Connected with DB');
 
