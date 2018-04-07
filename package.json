@@ -19,7 +19,8 @@
   ],
   "homepage": "https://github.com/Mimaaa/be-assessment-2#readme",
   "devDependencies": {
-    "nodemon": "^1.17.3"
+    "nodemon": "^1.17.3",
+    "xo": "^0.20.3"
   },
   "dependencies": {
     "argon2": "^0.17.3",
