@@ -1,16 +1,16 @@
-1. Install apps
+1. #Install apps
 
 [PostgreSQL.app](https://postgresapp.com/)
 [TablePlus](https://tableplus.io/)
 
-2. Setup PostgreSQL.app
+2. #Setup PostgreSQL.app
 
 After installing the PostgreSQL.app you will see an elephant icon in your task bar. 
 
 - Click on the icon and click on "open postgres"
 - Click on "initialize" and the status of your DB will be on "running"
 
-3. Import data
+3. #Import data
 
 - Open TablePlus and click on "create new connection" in the right corner
 - Click on "PostgreSQL" and click on "create"
@@ -32,11 +32,11 @@ host = localhost
 - Close the window
 - Double click on the connection (database)
 
-4. Select database
+4. #Select database
 
 Use the CMD + K shortcut and double click on "pwrlifting". If everything went according plan you are able to see the tables on the left side. If you click on a table you can view the data.
 
-5. Add environment variables
+5. #Add environment variables
 
 Copy and paste this in your .env file.
 
@@ -47,9 +47,9 @@ PGPASSWORD=null
 PGPORT=5432
 ```
 
-6. Success!
+6. #Success!
 
-You can go back to the [installation readme]().
+You can go back to the [installation readme](https://github.com/Mimaaa/be-assessment-2#installation).
 
 
 

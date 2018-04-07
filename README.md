@@ -30,17 +30,17 @@ I'm using [Heroku](https://www.heroku.com) to deploy my server in combination wi
 This repo is connected to Heroku, so all changes are deployed instantly.
 # Installation
 
-1. Database setup
+1. **Database setup**
 
-[Follow my guide]()
+[Follow my guide](https://github.com/Mimaaa/be-assessment-2/blob/master/readme_resources/db.md)
 
-2. Clone the project
+2. **Clone the project**
 
 ```sh
 $ git clone https://github.com/Mimaaa/be-assessment-2.git
 ```
 
-3. Remove Code
+3. **Remove Code**
 
 In order to use the local database you need to remove two lines of code.
 
@@ -85,7 +85,7 @@ In general I can say that my JavaScript/programming knowledge has increased. Stu
 Yes, I definitely did. When I start working on a project I forget time and go into tunnel vision mode where I keep coding and trying new things till my mind is exhausted. It's fun.
 # Resources
 
-I used some videos in [this playlist](https://www.youtube.com/watch?v=EnczCDsN0p0&list=PLLDNgndR69We8OLIvx2TwveoZvtPuMnCF) to learn how to use PostgreSQL in combination with Node.
+I used some videos in [this playlist](https://www.youtube.com/watch?v=EnczCDsN0p0&list=PLLDNgndR69We8OLIvx2TwveoZvtPuMnCF) to learn how to use PostgreSQL in combination with Node and I also referenced the code we used during the course.
 
 # Contributing
 If you would like to [contribute](https://github.com/Mimaaa/be-assessment-2/blob/master/CONTRIBUTING.md), you are welcome to do so.
