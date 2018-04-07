@@ -4,7 +4,7 @@
   <body>
     <%- include('nav.ejs') %>
       <main>
-        <form action="/edit/<%= data.id %>" method="POST" enctype="multipart/form-data">
+        <form class="form login" action="/edit/<%= data.id %>" method="POST" enctype="multipart/form-data">
           <label> Naam
             <input type="text" name="naam" value="<%= data.naam %>" placeholder="Vul hier je naam in">
           </label>

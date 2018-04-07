@@ -2,15 +2,21 @@
 <%- include('head.ejs') %>
   <body>
     <%- include('nav.ejs') %>
-    <main>
+    <main class="detail login">
       <% if (data) { %>
-        <h2>
-          <%= data.naam %>
-        </h2>
-        <a id="edit" href="/edit/<%= data.id %>">LIFTER AANPASSEN</a>
-        <form method="POST" action="/<%= data.id %>">
-          <button type="submit">LIFTER VERWIJDEREN</button>
-        </form>
+        <h1><%= data.naam %></h1>
+        <img src="/images/<%= data.id %>.jpg" alt="Image of lifter">
+        <ul>
+          <li>Geslacht: <%= data.geslacht %></li>
+          <li>Geboren op: <%= data.geboortedatum %></li>
+          <li>Weegt: <%= data.lichaamsgewicht %> kg</li>
+        </ul>
+        <section>
+          <a id="edit" href="/edit/<%= data.id %>">LIFTER AANPASSEN</a>
+          <form method="POST" action="/<%= data.id %>">
+            <button type="submit">LIFTER VERWIJDEREN</button>
+          </form>
+        </section>
       <% } %>
     </main>
     <%- include('tail.ejs') %>
