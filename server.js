@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const express = require('express');
+const helmet = require('helmet')
 const {Client} = require('pg');
 const multer = require('multer');
 const bodyParser = require('body-parser');
@@ -19,6 +20,7 @@ client.connect();
 console.log('Connected with DB');
 
 const app = express()
+  .use(helmet())
 	.use(express.static('static'))
 	.set('view engine', 'ejs')
 	.set('views', 'view')
