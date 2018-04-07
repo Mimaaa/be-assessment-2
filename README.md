@@ -1,6 +1,6 @@
 # PWRLIFTING
 
-An application where a list of lifters is displayed. You can interact with the list and find out more details about those people, but you can also add, edit and delete lifters.
+An application where a list of lifters is displayed. You can interact with the list and find out more about the people in the list, but you can also add, edit and delete lifters.
 
 Check out the demo right [here](https://pwrlifting.herokuapp.com/).
 
@@ -30,6 +30,20 @@ I'm using [Heroku](https://www.heroku.com) to deploy my server in combination wi
 This repo is connected to Heroku, so all changes are deployed instantly.
 # Installation
 
+1. Database setup
+
+[Follow my guide]()
+
+2. Clone the project
+
+```sh
+$ git clone https://github.com/Mimaaa/be-assessment-2.git
+```
+
+3. Remove Code
+
+In order to use the local database you need to remove two lines of code.
+
 ## Scripts
 
 To start the server:
@@ -47,26 +61,26 @@ To check your code on linting errors:
 $ npm run lint
 ```
 # To-do
-Currently, there are still some things left to do. I've started with the login and signup flows, but it's not there yet. There is a commit with the working code right [here](https://github.com/Mimaaa/be-assessment-2/commit/094ff67ca5c714de05ef69f28240b8b3d026464a). 
+Currently, there are still some things left to do. I've started with the log-in and sign-up flows, but it's not there yet. There is a commit with the working code right [here](https://github.com/Mimaaa/be-assessment-2/commit/094ff67ca5c714de05ef69f28240b8b3d026464a). 
 
--[] Login
--[] Signup
--[] Add competitions table with join to lifter table
+- [ ] Login
+- [ ] Signup
+- [ ] Add competitions table with join to lifter table
 
 # What did I learn?
 I learned a lot of new things above the things I already knew.
-## What
+## Things like...
 
 ### Status Codes & Error Handling
-I got a much better understanding on how important error handling actually is. It makes sense though. If you are visiting a website and something happens, but you don't get any feedback on what exactly happened then you get a bad user experience.
+I got a better understanding on how important error handling actually is. It makes sense though. If you are visiting a website and something happens, but you don't get any feedback on what exactly happened then you get a bad user experience.
 ### EJS
-When using Node I've always reverted to [Handlebars](https://handlebarsjs.com/), but [EJS](http://ejs.co/) is pretty awesome because you can still use JS in the templates.
+When using Node I always reverted to [Handlebars](https://handlebarsjs.com/), but [EJS](http://ejs.co/) is pretty awesome because you can still use JS in the templates.
 ### PostgreSQL
-I've never used PostgreSQL but I'm familiar with the SQL syntax; it doesn't differ that much from mySQL. However, I needed to find out how to make new databases, tables, filling the tables and also which data types to use, because there is a small difference between the mySQL and PostgreSQL data types.
+I've never used PostgreSQL but I'm familiar with the SQL syntax; it doesn't differ that much from mySQL. However, I needed to find out how to make new databases, tables, filling the tables and which data types to use, because there is a small difference between the mySQL and PostgreSQL data types.
 ### Node Concepts
 A better understanding of Nodes' core concepts. Of course we have access to amazing packages, but it's also important to know what Node has to offer at its core. By following the LearnYouNode tutorial I've had the opportunity to learn those concepts.
 ### JS
-In general I can say that my JavaScript/programming knowlegde has increased. Stuff like a callback was an abstract term, but because of the frequent use in JS land and during this course, I got a much better understanding of how to write JavaScript.
+In general I can say that my JavaScript/programming knowledge has increased. Stuff like a callback was an abstract term, but because of the frequent use in JS land and during this course, I got a better understanding of how to write JavaScript.
 ## Did I enjoyed it?
 Yes, I definitely did. When I start working on a project I forget time and go into tunnel vision mode where I keep coding and trying new things till my mind is exhausted. It's fun.
 # Resources
