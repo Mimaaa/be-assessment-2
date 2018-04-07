@@ -28,6 +28,7 @@ const app = express()
   .use(bodyParser.json())
   .get('/', home)
   .get('/add', addForm)
+  .get('/login', loginForm)
   .get('/:id', get)
   .get('/edit/:id', editForm)
   .post('/', upload.single('image'), add)
@@ -229,4 +230,8 @@ function edit(req, res) {
       res.status(400).render('error', result)
       return
     })
+}
+
+function loginForm(req, res) {
+  res.render('login')
 }
