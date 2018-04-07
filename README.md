@@ -42,7 +42,31 @@ $ git clone https://github.com/Mimaaa/be-assessment-2.git
 
 3. **Remove Code**
 
-In order to use the local database you need to remove two lines of code.
+In order to use the local database you need to remove two lines of code. On [line 15](https://github.com/Mimaaa/be-assessment-2/blob/1049fff9adba0188fa118ae392ea9e1cc95f288f/server.js#L15) we are setting up a new connection. You need to remove the code from `line 15 to 18`. 
+
+Line 15 to 17 should look like this:
+
+```javascript
+const client = new Client();
+client.connect();
+console.log('Connected with DB');
+```
+
+4. **Install dependencies**
+
+```sh
+$ npm install
+```
+
+5. **Start the server**
+
+```sh
+$ npm start
+```
+
+6. **Visit website**
+
+Go to `localhost:1902` to visit the website.
 
 ## Scripts
 
