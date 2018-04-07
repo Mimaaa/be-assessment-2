@@ -42,9 +42,9 @@ $ git clone https://github.com/Mimaaa/be-assessment-2.git
 
 3. **Remove Code**
 
-In order to use the local database you need to remove two lines of code. On [line 15](https://github.com/Mimaaa/be-assessment-2/blob/1049fff9adba0188fa118ae392ea9e1cc95f288f/server.js#L15) we are setting up a new connection. You need to remove the code from `line 15 to 18`. 
+In order to use the local database you need to remove two lines of code. On [line 15](https://github.com/Mimaaa/be-assessment-2/blob/1049fff9adba0188fa118ae392ea9e1cc95f288f/server.js#L15) we are setting up a new connection. You need to modify the code from `line 15 to 18`. 
 
-Line 15 to 17 should look like this:
+Line 15 to 17 should now look like this:
 
 ```javascript
 const client = new Client();
@@ -92,7 +92,7 @@ Currently, there are still some things left to do. I've started with the log-in 
 - [ ] Add competitions table with join to lifter table
 
 # What did I learn?
-I learned a lot of new things above the things I already knew.
+I learned a lot of new things besides the things I already knew.
 ## Things like...
 
 ### Status Codes & Error Handling
@@ -110,6 +110,10 @@ Yes, I definitely did. When I start working on a project I forget time and go in
 # Resources
 
 I used some videos in [this playlist](https://www.youtube.com/watch?v=EnczCDsN0p0&list=PLLDNgndR69We8OLIvx2TwveoZvtPuMnCF) to learn how to use PostgreSQL in combination with Node and I also referenced the code we used during the course.
+
+# Acknowledgments
+
+A big thanks to my teacher [Titus Wormer](https://github.com/wooorm) for creating this course and setting the bar higher than before. It was definitely challenging, but worth every minute.
 
 # Contributing
 If you would like to [contribute](https://github.com/Mimaaa/be-assessment-2/blob/master/CONTRIBUTING.md), you are welcome to do so.

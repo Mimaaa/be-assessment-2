@@ -3,7 +3,7 @@
 - [PostgreSQL.app](https://postgresapp.com/)
 - [TablePlus](https://tableplus.io/)
 
-2. **Setup PostgreSQL.app**
+2. **Set-up PostgreSQL.app**
 
 After installing the PostgreSQL.app you will see an elephant icon in your task bar. 
 
