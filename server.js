@@ -1,6 +1,7 @@
 'use strict'
 
 const express = require('express')
+const session = require('express-sessions')
 const { Client } = require('pg')
 const multer = require('multer')
 const fs = require('fs')
