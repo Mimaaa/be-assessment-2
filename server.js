@@ -87,8 +87,15 @@ function addForm(req, res) {
 
 function add(req, res) {
   const result = { errors: [], data: undefined}
-  const sql = 'INSERT INTO lifters (naam, geslacht, geboortedatum, lichaamsgewicht) VALUES ($1, $2, $3, $4) RETURNING id'
+  // const findLastId = 'SELECT MAX(id) FROM lifters'
+  // let lastId
+  const sql = `INSERT INTO lifters (naam, geslacht, geboortedatum, lichaamsgewicht) VALUES ($1, $2, $3, $4) RETURNING id`
   const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, +req.body.lichaamsgewicht]
+
+  // client.query(findLastId)
+  //   .then((data) => {
+  //     lastId = data.rows[0]
+  //   })
 
   client.query(sql, params)
     .then((data) => {
@@ -104,7 +111,7 @@ function add(req, res) {
       }
     })
     .catch((error) => {
-      console.log('er is een error')
+      console.log(error)
       result.errors.push({ id: 400, title: 'bad request' })
       res.status(400).render('error', result)
       return
