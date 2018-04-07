@@ -1,0 +1,22 @@
+<html lang="nl">
+<%- include('head.ejs') %>
+
+  <body>
+    <%- include('nav.ejs') %>
+      <main>
+        <form class="login" action="/signup" method="POST" enctype="multipart/form-data">
+          <label> Gebruikersnaam
+            <input type="text" name="username" placeholder="Vul hier je gebruikersnaam in">
+          </label>
+
+          <label> Wachtwoord
+            <input type="password" name "password" placeholder="Vul hier je wachtwoord in">
+          </label>
+          <p><a href="/login">Al een account? Klik hier.</a></p>
+          <button type="submit" value="Registreren">Registreren</button>
+        </form>
+      </main>
+      <%- include('tail.ejs') %>
+  </body>
+
+</html>
