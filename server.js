@@ -60,10 +60,9 @@ function home(req, res) {
 }
 
 function get(req, res) {
-  const id = req.params.id
   const result = { errors: [], data: undefined }
   const sql = 'SELECT * FROM lifters WHERE id = $1'
-  const params = [id]
+  const params = [req.params.id]
 
   client.query(sql, params)
     .then((data) => {
@@ -127,9 +126,8 @@ function add(req, res) {
 
 function remove(req, res) {
   const result = { errors: [], data: undefined }
-  const id = req.params.id
   const sql = 'DELETE FROM lifters WHERE id = $1'
-  const params = [id]
+  const params = [req.params.id]
 
   client.query(sql, params)
     .then((data) => {
@@ -150,9 +148,8 @@ function remove(req, res) {
 
 function editForm(req, res) {
   const result = { errors: [], data: undefined }
-  const id = req.params.id
   const sql = 'SELECT * FROM lifters WHERE id = $1'
-  const params = [id]
+  const params = [req.params.id]
 
   client.query(sql, params)
     .then((data) => {
