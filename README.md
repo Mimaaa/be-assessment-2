@@ -2,6 +2,8 @@
 
 An application where a list of lifters is displayed. You can interact with the list and find out more details about those people, but you can also add, edit and delete lifters.
 
+![Screenshot of Website](https://github.com/Mimaaa/be-assessment-2/blob/master/readme_resources/screenshot.png)
+
 Check out the demo right [here](https://pwrlifting.herokuapp.com/).
 ## Assessment 2
 This is the second - and last - assessment for the backend course in which we need to present our final project.
