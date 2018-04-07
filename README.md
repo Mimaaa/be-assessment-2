@@ -1,13 +1,15 @@
-# PWRLifting
+# PWRLIFTING
 
 An application where a list of lifters is displayed. You can interact with the list and find out more details about those people, but you can also add, edit and delete lifters.
 
-Check out the demo right [here](https://pwrlifting.herokuapp.com/)
-## Assignment
+Check out the demo right [here](https://pwrlifting.herokuapp.com/).
+## Assessment 2
+This is the second - and last - assessment for the backend course in which we need to present our final project.
 
+> This assessment focusses on all main goals of this course: Build web apps with Node and store data in a database.
 
 ## Database
-
+One of the requirements for this assessment is to use a database. We have the choice between noSQL and SQL databases. In the past I've worked with mySQL and I use it for my [hobby project](https://pwrlifting.nl). I've also used mongoDB for a [project](https://github.com/dandevri/watt-now/tree/feature/user-database) once. However, I'm planning to change the setup of my hobby project from PHP & mySQL to Node & PostgreSQL because of new feature additions. Thus, the choice for PostgreSQL was an easy one.
 ## Views
 
 There are several views I utilized.
@@ -19,46 +21,55 @@ There are several views I utilized.
 - [Log-in view](https://pwrlifting.herokuapp.com/login)
 - [Sign-up view](https://pwrlifting.herokuapp.com/signup)
 
-## Heroku
+## Deployment
 
 I'm using [Heroku](https://www.heroku.com) to deploy my server in combination with the [Heroku PostgreSQL instance](https://www.heroku.com/postgres). 
 
-This repo is connected to Heroku, so all the changes are deployed instantly.
+This repo is connected to Heroku, so all changes are deployed instantly.
 # Installation
 
 ## Scripts
 
-To start the server you can use:
+To start the server:
 ```sh
 $ npm start
 ```
 
-To watch file changes through nodemon use:
+To watch file changes through nodemon:
 ```sh
 $ npm run watch
 ```
 
-To check your code on linting errors use:
+To check your code on linting errors:
 ```sh
 $ npm run lint
 ```
 # To-do
+Currently, there are still some things left to do. I've started with the login and signup flows, but it's not there yet. There is a commit with the working code right [here](https://github.com/Mimaaa/be-assessment-2/commit/094ff67ca5c714de05ef69f28240b8b3d026464a). 
 
-[Working-on code](https://github.com/Mimaaa/be-assessment-2/commit/094ff67ca5c714de05ef69f28240b8b3d026464a)
+-[] Login
+-[] Signup
+-[] Add competitions table with join to lifter table
 
 # What did I learn?
-
+I learned a lot of new things above the things I already knew.
 ## What
 
-### Error Handling
+### Status Codes & Error Handling
+I got a much better understanding on how important error handling actually is. It makes sense though. If you are visiting a website and something happens, but you don't get any feedback on what exactly happened then you get a bad user experience.
+### EJS
+When using Node I've always reverted to [Handlebars](https://handlebarsjs.com/), but [EJS](http://ejs.co/) is pretty awesome because you can still use JS in the templates.
+### PostgreSQL
 
-## How
+### File Upload & Node Principles
+
+### JS
 
 ## Did I enjoyed it?
-
+Yes, I definitely did. When I start working on a project I forget time and go into tunnel vision mode where I keep coding and trying new things till my mind is exhausted. It's fun.
 # Resources
 
-I used some videos in [this playlist](https://www.youtube.com/watch?v=EnczCDsN0p0&list=PLLDNgndR69We8OLIvx2TwveoZvtPuMnCF) to learn how use PostgreSQL in combination with Node.
+I used some videos in [this playlist](https://www.youtube.com/watch?v=EnczCDsN0p0&list=PLLDNgndR69We8OLIvx2TwveoZvtPuMnCF) to learn how to use PostgreSQL in combination with Node.
 
 # Contributing
 If you would like to [contribute](https://github.com/Mimaaa/be-assessment-2/blob/master/CONTRIBUTING.md), you are welcome to do so.
