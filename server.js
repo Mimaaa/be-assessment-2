@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require('express')
-const session = require('express-sessions')
+const session = require('express-session')
 const { Client } = require('pg')
 const multer = require('multer')
 const fs = require('fs')
@@ -18,6 +18,11 @@ console.log('Connected with DB');
 
 const app = express()
   .use(express.static('static'))
+  .use(session({
+    resave: false,
+    saveUninitialized: true,
+    secret: process.env.SESSION_SECRET
+  }))
   .set('view engine', 'ejs')
   .set('views', 'view')
   .use(bodyParser.json())
@@ -83,11 +88,27 @@ function get(req, res) {
 }
 
 function addForm(req, res) {
-  res.render('add')
+  const result = { errors: [], data: undefined }
+  if (req.session.user) {
+    res.format({
+      json: () => { return res.json(result) },
+      html: () => { return res.render('add', result) }
+    })
+  } else {
+    result.errors.push({ id: 401, title: 'unauthorized' })
+    res.status(401).render('error', result)
+    return
+  }
 }
 
 function add(req, res) {
   const result = { errors: [], data: undefined}
+  if (!req.session.user) {
+    result.errors.push({ id: 401, title: 'unauthorized' })
+    res.status(401).render('error', result)
+    return
+  }
+
   // const findLastId = 'SELECT MAX(id) FROM lifters'
   // let lastId
   const sql = `INSERT INTO lifters (naam, geslacht, geboortedatum, lichaamsgewicht) VALUES ($1, $2, $3, $4) RETURNING id`
@@ -120,6 +141,12 @@ function add(req, res) {
 }
 
 function remove(req, res) {
+  const result = { errors: [], data: undefined }
+  if (!req.session.user) {
+    result.errors.push({ id: 401, title: 'unauthorized' })
+    res.status(401).render('error', result)
+    return
+  }
   const id = req.params.id
   const sql = 'DELETE FROM lifters WHERE id = $1'
   const params = [id]
@@ -142,8 +169,13 @@ function remove(req, res) {
 }
 
 function editForm(req, res) {
-  const id = req.params.id
   const result = { errors: [], data: undefined }
+  if (!req.session.user) {
+    result.errors.push({ id: 401, title: 'unauthorized' })
+    res.status(401).render('error', result)
+    return
+  }
+  const id = req.params.id
   const sql = 'SELECT * FROM lifters WHERE id = $1'
   const params = [id]
 
@@ -170,6 +202,12 @@ function editForm(req, res) {
 
 function edit(req, res) {
   const result = { errors: [], data: undefined }
+  if (!req.session.user) {
+    result.errors.push({ id: 401, title: 'unauthorized' })
+    res.status(401).render('error', result)
+    return
+  }
+
   const sql = 'UPDATE lifters SET naam = $1, geslacht = $2, geboortedatum = $3, lichaamsgewicht = $4 WHERE id = $5'
   const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, +req.body.lichaamsgewicht, req.params.id]
 
