@@ -2,9 +2,9 @@
 
 An application where a list of lifters is displayed. You can interact with the list and find out more details about those people, but you can also add, edit and delete lifters.
 
-![Screenshot of Website](https://github.com/Mimaaa/be-assessment-2/blob/master/readme_resources/screenshot.png)
-
 Check out the demo right [here](https://pwrlifting.herokuapp.com/).
+
+![Screenshot of Website](https://github.com/Mimaaa/be-assessment-2/blob/master/readme_resources/screenshot.png)
 ## Assessment 2
 This is the second - and last - assessment for the backend course in which we need to present our final project.
 
@@ -62,11 +62,11 @@ I got a much better understanding on how important error handling actually is. I
 ### EJS
 When using Node I've always reverted to [Handlebars](https://handlebarsjs.com/), but [EJS](http://ejs.co/) is pretty awesome because you can still use JS in the templates.
 ### PostgreSQL
-
-### File Upload & Node Principles
-
+I've never used PostgreSQL but I'm familiar with the SQL syntax; it doesn't differ that much from mySQL. However, I needed to find out how to make new databases, tables, filling the tables and also which data types to use, because there is a small difference between the mySQL and PostgreSQL data types.
+### Node Concepts
+A better understanding of Nodes' core concepts. Of course we have access to amazing packages, but it's also important to know what Node has to offer at its core. By following the LearnYouNode tutorial I've had the opportunity to learn those concepts.
 ### JS
-
+In general I can say that my JavaScript/programming knowlegde has increased. Stuff like a callback was an abstract term, but because of the frequent use in JS land and during this course, I got a much better understanding of how to write JavaScript.
 ## Did I enjoyed it?
 Yes, I definitely did. When I start working on a project I forget time and go into tunnel vision mode where I keep coding and trying new things till my mind is exhausted. It's fun.
 # Resources
