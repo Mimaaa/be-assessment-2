@@ -194,8 +194,11 @@ button:hover {
   box-shadow: none;
 }
 
+.login p {
+  text-align: center;
+}
+
 .login a {
-  margin-left: 3em;
   text-decoration: underline;
 }
 
