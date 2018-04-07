@@ -193,3 +193,23 @@ button:hover {
   background-color: #b4b4b4;
   box-shadow: none;
 }
+
+.login a {
+  margin-left: 3em;
+  text-decoration: underline;
+}
+
+.login a:hover {
+  color: gray;
+}
+
+.login button {
+  margin: auto;
+  margin-top: 2em;
+  width: 100%;
+}
+
+.login button:hover {
+  background-color: black;
+  color: white;
+}

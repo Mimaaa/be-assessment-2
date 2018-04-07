@@ -4,14 +4,15 @@
   <body>
     <%- include('nav.ejs') %>
       <main>
-        <form action="/login" method="POST" enctype="multipart/form-data">
+        <form class="login" action="/login" method="POST" enctype="multipart/form-data">
           <label> Gebruikersnaam
-            <input type="text" name="username">
+            <input type="text" name="username" placeholder="Vul hier je gebruikersnaam in">
           </label>
 
           <label> Wachtwoord
-            <input type="password" name"password">
+            <input type="password" name"password" placeholder="Vul hier je wachtwoord in">
           </label>
+          <a href="/signup">No account yet? Click here to sign up.</a>
           <button type="submit" value="Log in">Log in</button>
         </form>
       </main>
