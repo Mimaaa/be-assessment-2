@@ -110,7 +110,7 @@ function add(req, res) {
   //   })
 
   const sql = `INSERT INTO lifters (naam, geslacht, geboortedatum, lichaamsgewicht) VALUES ($1, $2, $3, $4) RETURNING id`;
-  const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, Number(req.body.lichaamsgewicht)];
+  const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, +req.body.lichaamsgewicht];
 
   client.query(sql, params)
     .then(data => {
@@ -185,7 +185,7 @@ function editForm(req, res) {
 function edit(req, res) {
   const result = {errors: [], data: undefined};
   const sql = 'UPDATE lifters SET naam = $1, geslacht = $2, geboortedatum = $3, lichaamsgewicht = $4 WHERE id = $5';
-  const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, Number(req.body.lichaamsgewicht), req.params.id];
+  const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, +req.body.lichaamsgewicht, req.params.id];
 
   client.query(sql, params)
     .then(data => {
