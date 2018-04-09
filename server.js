@@ -72,7 +72,7 @@ function get(req, res) {
         result.errors.push({id: 404, title: 'not found'});
         res.status(404).render('error', result);
         return;
-      }
+      } else {
         result.data = data.rows[0];
         res.format({
           json: () => {
@@ -82,6 +82,7 @@ function get(req, res) {
             return res.render('detail', result);
           }
         });
+      }
     })
     .catch(error => {
       console.log(error);
