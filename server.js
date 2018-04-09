@@ -6,7 +6,7 @@ const helmet = require('helmet');
 const {Client} = require('pg');
 const multer = require('multer');
 const bodyParser = require('body-parser');
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 
 const upload = multer({
   dest: 'static/images'
@@ -19,7 +19,7 @@ const client = new Client({
 client.connect();
 console.log('Connected with DB');
 
-const app = express()
+express()
   .use(helmet())
   .use(express.static('static'))
   .use(bodyParser.json())
@@ -74,7 +74,6 @@ function get(req, res) {
       if (data.rowCount === 0) {
         result.errors.push({id: 404, title: 'not found'});
         res.status(404).render('error', result);
-        return;
       } else {
         result.data = data.rows[0];
         res.format({
@@ -110,7 +109,7 @@ function add(req, res) {
   //   })
 
   const sql = `INSERT INTO lifters (naam, geslacht, geboortedatum, lichaamsgewicht) VALUES ($1, $2, $3, $4) RETURNING id`;
-  const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, +req.body.lichaamsgewicht];
+  const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, Number(req.body.lichaamsgewicht)];
 
   client.query(sql, params)
     .then(data => {
@@ -141,7 +140,6 @@ function remove(req, res) {
       if (data.rowCount === 0) {
         result.errors.push({id: 404, title: 'not found'});
         res.status(404).render('error', result);
-        return;
       } else {
         res.redirect('/');
       }
@@ -185,7 +183,7 @@ function editForm(req, res) {
 function edit(req, res) {
   const result = {errors: [], data: undefined};
   const sql = 'UPDATE lifters SET naam = $1, geslacht = $2, geboortedatum = $3, lichaamsgewicht = $4 WHERE id = $5';
-  const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, +req.body.lichaamsgewicht, req.params.id];
+  const params = [req.body.naam, req.body.geslacht, req.body.geboortedatum, Number(req.body.lichaamsgewicht), req.params.id];
 
   client.query(sql, params)
     .then(data => {
