@@ -139,8 +139,9 @@ function remove(req, res) {
         result.errors.push({id: 404, title: 'not found'});
         res.status(404).render('error', result);
         return;
-      }
+      } else {
         res.redirect('/');
+      }
     })
     .catch(error => {
       console.log(error);
